@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:learn/provider/basic/CounterModel.dart';
-import 'package:learn/provider/basic/GoodsListModel.dart';
+import 'package:learn/provider/GoodsListModel.dart';
 import 'package:learn/routes/routes.dart';
 import 'package:provider/provider.dart';
 
