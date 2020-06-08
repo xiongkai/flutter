@@ -17,7 +17,8 @@ class NavigatorUtil{
     Application.router.navigateTo(context, Routes.login, replace: replace, clearStack: clearStack);
   }
   /// 跳转到详情页面
-  static void goDetailPage(BuildContext context, {bool replace = false, bool clearStack = false}) {
-    Application.router.navigateTo(context, Routes.detail, replace: replace, clearStack: clearStack);
+  static void goDetailPage(BuildContext context, String title, String articleUrl, {bool replace = false, bool clearStack = false}) {
+    String routerPath = '${Routes.detail}?title=${Uri.encodeComponent(title)}&&articleUrl=${Uri.encodeComponent(articleUrl)}';
+    Application.router.navigateTo(context, routerPath, replace: replace, clearStack: clearStack);
   }
 }

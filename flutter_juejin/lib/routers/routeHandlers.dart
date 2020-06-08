@@ -22,6 +22,8 @@ var homeHandler = Handler(
 
 var detailHandler = Handler(
     handlerFunc: (BuildContext context, Map<String, List<String>> params) {
-      return DetailPage();
+      String articleUrl = params['articleUrl']?.first;
+      String title = params['title']?.first;
+      return DetailPage(title: title, articleUrl: articleUrl);
     }
 );

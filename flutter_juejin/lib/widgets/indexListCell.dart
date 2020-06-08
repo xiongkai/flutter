@@ -12,7 +12,7 @@ class IndexListCell extends StatelessWidget {
 
   IndexListCell({Key key, this.cellInfo}) : super(key: key);
 
-  TextStyle titleTextStyle = TextStyle(
+  final TextStyle titleTextStyle = const TextStyle(
     color: Color(0xFFB2BAC2),
     fontWeight: FontWeight.w300,
     fontSize: 13.0,
@@ -58,7 +58,7 @@ class IndexListCell extends StatelessWidget {
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () {
-        NavigatorUtil.goDetailPage(context);
+        NavigatorUtil.goDetailPage(context, cellInfo.title, cellInfo.detailUrl);
       },
       child: Container(
         padding: const EdgeInsets.fromLTRB(10.0, 10.0, 10.0, 0.0),

@@ -84,6 +84,7 @@ class _IndexPageState extends State<IndexPage> with AutomaticKeepAliveClientMixi
 
   @override
   Widget build(BuildContext context) {
+    super.build(context);
     if(_listData == null || _listData.isEmpty){
       return Center(
         child: CircularProgressIndicator(),
