@@ -12,44 +12,55 @@ class ApplicationPage extends StatefulWidget {
 }
 
 class _ApplicationPageState extends State<ApplicationPage> {
-  static final appBarTitles = ["首页", "发现", "我的"];
+  static final _appBarTitles = ["首页", "体系", "公众号", "导航", "项目"];
   int _currentIndex = 0;
-
-  var _navigationBarItems = <BottomNavigationBarItem>[
-    BottomNavigationBarItem(
-        icon: Icon(Icons.home), title: Text(appBarTitles[0])
-    ),
-    BottomNavigationBarItem(
-        icon: Icon(Icons.dashboard), title: Text(appBarTitles[1])
-    ),
-    BottomNavigationBarItem(
-        icon: Icon(Icons.person), title: Text(appBarTitles[2])
-    ),
-  ];
-
-  var _homeBody = <Widget>[HomeListPage(), FindListPage(), AboutUsPage()];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(appBarTitles[_currentIndex]),
-        actions: <Widget>[
+        title: Text(_appBarTitles[_currentIndex]),
+        actions: _currentIndex!=0?null:<Widget>[
           IconButton(
               icon: Icon(Icons.search),
-              onPressed: (){
-
-              }
+              onPressed: (){}
           )
         ],
       ),
       body: IndexedStack(
         index: _currentIndex,
-        children: _homeBody,
+        children: <Widget>[
+          HomeListPage(),
+          FindListPage(),
+          AboutUsPage(),
+          AboutUsPage(),
+          AboutUsPage()
+        ],
       ),
       bottomNavigationBar: BottomNavigationBar(
         type: BottomNavigationBarType.fixed,
-        items: _navigationBarItems,
+        items: <BottomNavigationBarItem>[
+          BottomNavigationBarItem(
+              icon: Icon(Icons.home),
+              title: Text(_appBarTitles[0])
+          ),
+          BottomNavigationBarItem(
+              icon: Icon(Icons.gamepad),
+              title: Text(_appBarTitles[1])
+          ),
+          BottomNavigationBarItem(
+              icon: Icon(Icons.supervisor_account),
+              title: Text(_appBarTitles[2])
+          ),
+          BottomNavigationBarItem(
+              icon: Icon(Icons.navigation),
+              title: Text(_appBarTitles[3])
+          ),
+          BottomNavigationBarItem(
+              icon: Icon(Icons.dashboard),
+              title: Text(_appBarTitles[4])
+          )
+        ],
         currentIndex: _currentIndex,
         onTap: (int index){
           setState(() {
