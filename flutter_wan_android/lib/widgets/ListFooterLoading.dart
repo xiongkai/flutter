@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
-class ListFooter extends StatelessWidget{
+class ListFooterLoading extends StatelessWidget{
   final bool noMore;
 
-  const ListFooter({Key key, this.noMore}) : super(key: key);
+  const ListFooterLoading({Key key, this.noMore}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

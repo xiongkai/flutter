@@ -4,7 +4,7 @@ import 'package:wanandroid/model/BaseModel.dart';
 import 'package:wanandroid/model/article_entity.dart';
 import 'package:wanandroid/model/banner_entity.dart';
 import 'package:wanandroid/widgets/AritcleItem.dart';
-import 'package:wanandroid/widgets/ListFooter.dart';
+import 'package:wanandroid/widgets/ListFooterLoading.dart';
 import 'package:wanandroid/widgets/PageLoading.dart';
 import 'package:wanandroid/widgets/SlideView.dart';
 
@@ -143,7 +143,7 @@ class _HomeListPageState extends State<HomeListPage>{
       }
     }
     if(_articleList != null && index == _articleList.length){
-      return ListFooter(noMore: _currPage == _pageCount);
+      return ListFooterLoading(noMore: _currPage == _pageCount);
     }
     ArticleData item = _articleList[index];
     return ArticleItem(key: ValueKey(item.id), articleData: item);
