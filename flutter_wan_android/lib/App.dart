@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:wanandroid/pages/AboutUsPage.dart';
 import 'package:wanandroid/pages/FindListPage.dart';
 import 'package:wanandroid/pages/HomeListPage.dart';
+import 'package:wanandroid/routers/NavigatorUtil.dart';
 
 class ApplicationPage extends StatefulWidget {
 
@@ -17,15 +18,31 @@ class _ApplicationPageState extends State<ApplicationPage> {
 
   @override
   Widget build(BuildContext context) {
+    double windowWidth = MediaQuery.of(context).size.width;
+    double statusTop = MediaQuery.of(context).padding.top;
     return Scaffold(
       appBar: AppBar(
         title: Text(_appBarTitles[_currentIndex]),
         actions: _currentIndex!=0?null:<Widget>[
           IconButton(
               icon: Icon(Icons.search),
-              onPressed: (){}
+              onPressed: (){
+                debugPrint("123");
+                NavigatorUtil.getWebViewPage(context, "百度", "https://www.baidu.com");
+              }
           )
         ],
+      ),
+      drawer: Container(
+        height: double.infinity,
+        width: windowWidth*0.7,
+        decoration: BoxDecoration(
+          color: Colors.red
+        ),
+        padding: EdgeInsets.only(
+          top: statusTop
+        ),
+        child: Text("pander"),
       ),
       body: IndexedStack(
         index: _currentIndex,

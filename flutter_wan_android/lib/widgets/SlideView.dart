@@ -1,8 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:wanandroid/model/banner_entity.dart';
+import 'package:wanandroid/routers/NavigatorUtil.dart';
 
 class SlideView extends StatefulWidget{
-  final List<dynamic> data;
+  final List<BannerEntity> data;
 
   SlideView({Key key, this.data}): super(key: key);
 
@@ -16,7 +18,7 @@ class _SlideViewState extends State<SlideView> with SingleTickerProviderStateMix
   @override
   void initState() {
     super.initState();
-    List<dynamic> data = widget.data;
+    List<BannerEntity> data = widget.data;
     _controller = TabController(length: data==null?0:data.length, vsync: this);
   }
 
@@ -29,19 +31,19 @@ class _SlideViewState extends State<SlideView> with SingleTickerProviderStateMix
   @override
   Widget build(BuildContext context) {
     List<Widget> widgets = [];
-    List<dynamic> data = widget.data;
+    List<BannerEntity> data = widget.data;
     if(data != null && data.isNotEmpty){
       data.forEach((element) {
-        int id = element["id"];
-        String url = element["imagePath"];
-        String title = element["title"];
         widgets.add(GestureDetector(
-          key: ValueKey(id),
-          onTap: (){},
+          key: ValueKey(element.id),
+          onTap: (){
+            NavigatorUtil.getWebViewPage(context, element.title, element.url);
+          },
           child: Stack(
             fit: StackFit.expand,
             children: [
-              Image.network(url,
+              Image.network(
+                element.imagePath,
                 fit: BoxFit.cover,
               ),
               Align(
@@ -52,7 +54,8 @@ class _SlideViewState extends State<SlideView> with SingleTickerProviderStateMix
                       color: const Color(0x50000000)
                   ),
                   padding: EdgeInsets.all(5.0),
-                  child: Text(title,
+                  child: Text(
+                    element.title,
                     maxLines: 1,
                     overflow: TextOverflow.ellipsis,
                     style: TextStyle(

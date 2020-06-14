@@ -9,7 +9,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 import 'package:wanandroid/main.dart';
-import 'package:wanandroid/routers/routes.dart';
+import 'package:wanandroid/routers/Routes.dart';
 
 void main() {
   testWidgets('Counter increments smoke test', (WidgetTester tester) async {
